@@ -1,4 +1,4 @@
-﻿namespace Dev-Architecture-Bloemenwinkel-API.Models
+﻿namespace Dev-Architecture-Bloemenwinkel-API.Models;
 {
     public class ProductRepository : IProductRepository
     {
