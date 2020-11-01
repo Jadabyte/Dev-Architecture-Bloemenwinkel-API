@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 using Xunit;
+=======
+﻿using Xunit;
+>>>>>>> origin/bob
 using Prime.Services;
 
 namespace Prime.UnitTests.Services
@@ -22,5 +26,9 @@ namespace Prime.UnitTests.Services
 
             Assert.False(result, $"{value} should not be prime");
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/bob
     }
 }
