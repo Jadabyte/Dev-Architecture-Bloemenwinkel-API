@@ -1,4 +1,4 @@
-namespace Dev-Architecture-Bloemenwinkel-API.Models
+namespace BasicRestApi.Models.Domain
 {
     public interface IProductRepository
     {

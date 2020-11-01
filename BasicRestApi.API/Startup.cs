@@ -34,7 +34,10 @@ namespace BasicRestApi.API
 
             // This is for adding the controllers
             services.AddControllers();
-            //services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:Default"]));
+
+            // Registers context for the database
+            services.AddMvc();  
+            services.Add(new ServiceDescriptor(typeof(FlowerStoreContext), new FlowerStoreContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,6 +12,12 @@ namespace BasicRestApi.API.Controllers
     [ApiController]
     public class StoreController : Controller
     {
+        public IActionResult Index()  
+        {  
+            FlowerStoreContext context = HttpContext.RequestServices.GetService(typeof(BasicRestApi.Model.Domain.FlowerStoreContext)) as FlowerStoreContext;  
+  
+            return View(context.GetAllAlbums());  
+        }  
         // GET: api/Store
 
         [HttpGet]
