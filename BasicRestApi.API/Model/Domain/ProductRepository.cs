@@ -1,4 +1,8 @@
-﻿namespace BasicRestAPI.Models.Domain
+﻿using BasicRestApi.Models.Domain;
+using System;
+using System.Collections.Generic;
+
+namespace BasicRestAPI.Models.Domain
 {
     public class ProductRepository : IProductRepository
     {
@@ -7,11 +11,11 @@
 
         public ProductRepository()
         {
-        Add(new Product { Name = "Roos", Category = "bloem", Price = 1.39 });
-        Add(new Product { Name = "Agapanthus", Category = "bloem", Price = 4.99 });
-        Add(new Product { Name = "Tulp", Category = "bloem", Price = 3.75 });
-        Add(new Product { Name = "Zonnebloem", Category = "bloem", Price = 6.99 });
-        Add(new Product { Name = "Camelia", Category = "bloem", Price = 3.99 });
+        Add(new Product { Name = "Roos", Category = "bloem", Price = 139 });
+        Add(new Product { Name = "Agapanthus", Category = "bloem", Price = 499 });
+        Add(new Product { Name = "Tulp", Category = "bloem", Price = 375 });
+        Add(new Product { Name = "Zonnebloem", Category = "bloem", Price = 69 });
+        Add(new Product { Name = "Camelia", Category = "bloem", Price = 399 });
     }
 
         public IEnumerable<Product> GetAll()

@@ -1,12 +1,16 @@
 ﻿using BasicRestApi.Models.Domain;
-public class ProductsController : ApiController
-{
-    static readonly IProductRepository repository = new ProductRepository();
+using BasicRestAPI.Models.Domain;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 
-}
 //Get all products
-public class ProductsController : ApiController
+public class ProductsController : ControllerBase
 {
+    static readonly ProductRepository repository = new ProductRepository();
     public IEnumerable<Product> GetAllProducts()
     {
         return repository.GetAll();

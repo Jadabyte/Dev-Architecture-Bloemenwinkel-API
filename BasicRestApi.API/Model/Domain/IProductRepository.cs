@@ -1,3 +1,6 @@
+using BasicRestAPI.Models.Domain;
+using System.Collections.Generic;
+
 namespace BasicRestApi.Models.Domain
 {
     public interface IProductRepository
