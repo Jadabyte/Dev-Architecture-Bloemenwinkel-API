@@ -17,5 +17,10 @@ namespace BasicRestApi.Model.Domain
         {
             return new MySqlConnection(ConnectionString);
         }
+
+        internal object GetAllAlbums()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
