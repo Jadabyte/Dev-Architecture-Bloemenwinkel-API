@@ -8,63 +8,71 @@ using System.Net;
 using System.Net.Http;
 
 //Get all products
-public class ProductsController : ControllerBase
+[Route("api/ProductController")]
+[ApiController]
+public class ValuesController : ControllerBase
 {
-    static readonly ProductRepository repository = new ProductRepository();
-    public IEnumerable<Product> GetAllProducts()
-    {
-        return repository.GetAll();
-    }
-
-    //Get products By id
-    public Product GetProduct(int id)
-    {
-        Product item = repository.Get(id);
-        if (item == null)
-        {
-            throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-        return item;
-    }
-//Get products By Category
-    public IEnumerable<Product> GetProductsByCategory(string category)
-    {
-        return repository.GetAll().Where(
-            p => string.Equals(p.Category, category, StringComparison.OrdinalIgnoreCase));
-    }
-// creates new products
-
-
-    public HttpResponseMessage PostProduct(Product item)
-    {
-        item = repository.Add(item);
-        var response = Request.CreateResponse<Product>(HttpStatusCode.Created, item);
-
-        string uri = Url.Link("DefaultApi", new { id = item.Id });
-        response.Headers.Location = new Uri(uri);
-        return response;
-    }
-//update product
-    public void PutProduct(int id, Product product)
-    {
-        product.Id = id;
-        if (!repository.Update(product))
-        {
-            throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-    }
-
-//delete products
-    public void DeleteProduct(int id)
-    {
-        Product item = repository.Get(id);
-        if (item == null)
-        {
-            throw new HttpResponseException(HttpStatusCode.NotFound);
-        }
-
-        repository.Remove(id);
-    }
     
+   
+        private readonly ProductRepository _repository = new ProductRepository();
+    // GET api/controller
+    [HttpGet]
+    public ActionResult<IEnumerable<string>> GetAllProduct()
+    {
+        var ProductItems = _repository.GetAll();
+        if (ProductItems != null)
+        {
+            return Ok(ProductItems);
+        }
+        return NotFound();
+    }
+
+    // GET api/value/ by id
+    [HttpGet("{id}", Name="GetProductById")]
+    public ActionResult<string> GetProduct(int id)
+    {
+        var ProductItem = _repository.Get(id);
+        if (ProductItem != null) { 
+        return Ok(ProductItem);
+        }
+        return NotFound();
+    }
+
+    // POST api/values
+    [HttpPost]
+    public ActionResult<ProductReadDto>CreateProduct(ProductCreateDto productCreateDto)
+    {
+        var productModel = _mapper.Map<Product>(productCreateDto);
+        _repository.CreateProduct(productModel);
+        return CreatedAtRoute(nameof(GetProductById), new { Id = ProductReadDto.Id }, ProductReadDto);
+    }
+
+    // PUT api/values/5
+    [HttpPut("{id}")]
+    public ActionResult PutProduct(int id, ProductUpdateDto productUpdateDto)
+    {
+        var productModelFromRepo = _repository.GetProductById(id);
+        if(productModelFromRepo == null)
+        {
+            return NotFound();
+        }
+        _mapper.Map(productUpdateDto, productModelFromRepo);
+        _repository.UpdateProduct(productModelFromRepo);
+        _repository.SaveChanges();
+        return NoContent();
+    }
+
+    // DELETE api/values/5
+    [HttpDelete("{id}")]
+    public ActionResult DeleteProduct(int id)
+    {
+        var productModelFromRepo = _repository.GetProductById(id);
+        if (productModelFromRepo == null)
+        {
+            return NotFound();
+        }
+        _repository.DeleteProduct(productModelFromRepo);
+        _repository.SaveChanges();
+        return NoContent();
+    }
 }
