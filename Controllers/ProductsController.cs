@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using FlowerStoreAPI.Data;
 using FlowerStoreAPI.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,17 +20,17 @@ namespace FlowerStoreAPI.Controllers
 
         // GET api/products
         [HttpGet]
-        public ActionResult <IEnumerable<Product>> GetAllProducts()
+        public async Task<IActionResult> GetAllProducts()
         {
-            var productItems = _repository.GetAllProducts();
+            var productItems = await _repository.GetAllProducts();
             return Ok(productItems);
         }
 
         // GET api/products/{id}
         [HttpGet("{id}")]
-        public ActionResult <Product> GetProductById(int id)
+        public async Task<IActionResult> GetProductById(int id)
         {
-            var productItem = _repository.GetProductById(id);
+            var productItem = await _repository.GetProductById(id);
             return Ok(productItem);
         }
     }
