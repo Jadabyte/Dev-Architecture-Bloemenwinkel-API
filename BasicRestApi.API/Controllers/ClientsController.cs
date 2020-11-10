@@ -8,34 +8,73 @@ namespace BasicRestApi.API.Controllers
     [Route("api/[controller]")]
     public class ClientsController : ControllerBase
     {
+
+        private readonly ClientsRepository _repository = new ClientsRepository();
         [HttpGet]
-        public ActionResult <IList<string>> GetAllClients()
+        public ActionResult<IEnumerable<string>> GetAllClients()
         {
-            return new List<string> { "value1", "value2" };
+            var Clients = _repository.GetAll();
+            if (Clients != null)
+            {
+                return Ok(Clients);
+            }
+
+            return NotFound();
         }
 
         [HttpGet("{id}")]
-        public ActionResult <IList<string>> GetClientById(int id)
+        public ActionResult<string> GetClientById(int id)
         {
-            return new List<string> { "value1" };
+            var Client = _repository.Get(id);
+            if (Client != null)
+            {
+                return Ok(Client);
+            }
+            return NotFound();
         }
 
         [HttpPost]
-        public ActionResult CreateClient(string input)
+        public ActionResult<ClientReadDto> CreateClient(ClientCreateDto clientcreatedto)
         {
-            return NotFound();
+            var ClientModel = _mapper.Map<Client>(clientcreatedto);
+            _repository.CreateClient(ClientModel);
+            return CreatedAtRoute(nameof(GetClientById),
+            new
+            {
+                Id = ClientReadDto.Id
+            },
+
+                ClientReadDto);
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateClient(string input)
+        public ActionResult UpdateClient(int id, ClientUpdateDto clientUpdateDto)
         {
-            return NotFound();
+            var clientModelFromRepo = _repository.GetClientById(id);
+
+            if (clientModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(clientUpdateDto, clientModelFromRepo);
+            _repository.UpdateClient(clientModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteClient(int id)
         {
-            return NotFound();
+            var clientModelFromRepo = _repository.GetClientById(id);
+            if (clientModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repository.DeleteClient(clientModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
         }
     }
 }
