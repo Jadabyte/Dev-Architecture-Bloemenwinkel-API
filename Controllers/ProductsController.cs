@@ -71,7 +71,7 @@ namespace FlowerStoreAPI.Controllers
 
         // PUT api/values/5
         /// <summary>
-        /// This POST-request allows you to update a product.
+        /// This PUT-request allows you to update a product.
         /// </summary>
         /// <returns>Update Product</returns>
         [HttpPut("{id}")]
@@ -90,7 +90,7 @@ namespace FlowerStoreAPI.Controllers
 
         // DELETE api/values/5
         /// <summary>
-        /// This POST-request allows you to delete a product.
+        /// This DELETE-request allows you to delete a product.
         /// </summary>
         /// <returns>Deleted Product</returns>
         [HttpDelete("{id}")]

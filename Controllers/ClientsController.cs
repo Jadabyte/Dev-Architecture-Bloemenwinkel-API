@@ -40,6 +40,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // GET api/clients/{id}
+        /// <summary>
+        /// This GET-request gives you the product that corresponds to the requested Id.
+        /// </summary>
+        /// <returns>Requested item by Id</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetClientById(int id)
         {

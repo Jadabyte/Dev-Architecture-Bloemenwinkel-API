@@ -22,5 +22,35 @@
             </summary>
             <returns>Requested item by Id</returns>
         </member>
+        <member name="M:FlowerStoreAPI.Controllers.ProductsController.GetAllProducts">
+            <summary>
+            This GET-request gives you a list of all the products
+            </summary>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.ProductsController.GetProductById(System.Int32)">
+            <summary>
+            This GET-request gives you the product that corresponds to the requested Id.
+            </summary>
+            <returns>Requested item by Id</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.ProductsController.CreateProduct(FlowerStoreAPI.Dtos.ProductCreateDto)">
+            <summary>
+            This POST-request allows you to create a product.
+            </summary>
+            <returns>Created Product</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.ProductsController.UpdateProduct(System.Int32,FlowerStoreAPI.Dtos.ProductUpdateDto)">
+            <summary>
+            This POST-request allows you to update a product.
+            </summary>
+            <returns>Update Product</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.ProductsController.DeleteProduct(System.Int32)">
+            <summary>
+            This POST-request allows you to delete a product.
+            </summary>
+            <returns>Deleted Product</returns>
+        </member>
     </members>
 </doc>
