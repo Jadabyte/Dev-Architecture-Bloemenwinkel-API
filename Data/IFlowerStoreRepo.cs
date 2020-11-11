@@ -14,6 +14,8 @@ namespace FlowerStoreAPI.Data
         Task<IEnumerable<Product>> GetAllProducts();
         Task<Product> GetProductById(int id);
         void CreateProduct(Product prod);
+        void UpdateProduct(Product prod);
+        void DeleteProduct(Product prod);
 
         Task<IEnumerable<Client>> GetAllClients();
         Task<Client> GetClientById(int id);

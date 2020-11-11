@@ -82,5 +82,21 @@ namespace FlowerStoreAPI.Data
 
             _context.Clients.Add(client);
         }*/
+
+        // Logic for Update
+        public void UpdateProduct(Product prod)
+        {
+            //Do Nothing
+        }
+
+        // Logic for Delete
+        public void DeleteProduct(Product prod)
+        {
+            if(prod == null)
+            {
+                throw new ArgumentNullException(nameof(prod));
+            }
+            _context.Products.Remove(prod);
+        }
     }
 }

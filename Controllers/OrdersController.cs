@@ -20,9 +20,9 @@ namespace FlowerStoreAPI.Controllers
 
         // GET api/orders
         /// <summary>
-        /// This GET-request gives you a list of all the clients of the flower store.
+        /// This GET-request gives you a list of all the orders of the flower store.
         /// </summary>
-        /// <returns>A list of clients</returns>
+        /// <returns>A list of orders</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Order>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -34,6 +34,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // GET api/orders/{id}
+        /// <summary>
+        /// This GET-request gives you the order that corresponds to the requested Id.
+        /// </summary>
+        /// <returns>Requested item by Id</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderById(int id)
         {
