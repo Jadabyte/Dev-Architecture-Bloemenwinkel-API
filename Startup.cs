@@ -15,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.OpenApi.Models;
+using System.IO;
+using System.Diagnostics;
 
 namespace FlowerStoreAPI
 {
@@ -33,7 +35,14 @@ namespace FlowerStoreAPI
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Flower Store API", Version = "v1"} );
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Flower Store API",
+                    Version = "v1"
+                });
+
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "FlowerStoreAPI.xml");
+                c.IncludeXmlComments(filePath);
             });
 
             services.AddDbContext<FlowerStoreContext>(options => options.UseMySQL(Configuration.GetConnectionString("FlowerStoreconnection")));
