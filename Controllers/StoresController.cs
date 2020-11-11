@@ -35,5 +35,57 @@ namespace FlowerStoreAPI.Controllers
             var storeItem = await _repository.GetStoreById(id);
             return Ok(storeItem);
         }
+        /*
+        // POST: api/Store
+        [HttpPost]
+        [Produces("applications/json")]
+        public Store Post([FromBody] Store store)
+        {
+            // Logic to create new store.
+            return new Store();
+        }
+
+        // PUT: api/Store/2
+
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Store store)
+        {
+            // Logic to update a store.
+        }
+
+        // DELETE: api/Store/2
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            // Logic to delete a store.
+        }
+
+        private List<Store> GetStores()
+        {
+            return new List<Store>()
+            {
+                new Store()
+                {
+                    Id = 1,
+                    City = "Antwerp",
+                    Street = "Meir",
+                    Number = "10",
+                    Phone = "+32 3 666 22 11",
+                    Email = "antwerp@test.com"
+                },
+
+                new Store()
+                {
+                    Id = 2,
+                    City = "Mechelen",
+                    Street = "Bruul",
+                    Number = "20",
+                    Phone = "+32 3 222 33 88",
+                    Email = "mechelen@test.com"
+                }
+
+            };
+        }*/
     }
 }

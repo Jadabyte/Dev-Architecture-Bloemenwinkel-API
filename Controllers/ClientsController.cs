@@ -42,5 +42,50 @@ namespace FlowerStoreAPI.Controllers
             var clientItem = await _repository.GetClientById(id);
             return Ok(clientItem);
         }
+
+        /*
+        [HttpPost]
+        public ActionResult<ClientReadDto> CreateClient(ClientCreateDto clientcreatedto)
+        {
+            var ClientModel = _mapper.Map<Client>(clientcreatedto);
+            _repository.CreateClient(ClientModel);
+            return CreatedAtRoute(nameof(GetClientById),
+            new
+            {
+                Id = ClientReadDto.Id
+            },
+
+                ClientReadDto);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateClient(int id, ClientUpdateDto clientUpdateDto)
+        {
+            var clientModelFromRepo = _repository.GetClientById(id);
+
+            if (clientModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(clientUpdateDto, clientModelFromRepo);
+            _repository.UpdateClient(clientModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteClient(int id)
+        {
+            var clientModelFromRepo = _repository.GetClientById(id);
+            if (clientModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repository.DeleteClient(clientModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
+        }*/
     }
 }

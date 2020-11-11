@@ -33,5 +33,44 @@ namespace FlowerStoreAPI.Controllers
             var productItem = await _repository.GetProductById(id);
             return Ok(productItem);
         }
+
+        /*
+        // POST api/values
+        [HttpPost]
+        public ActionResult<ProductReadDto>CreateProduct(ProductCreateDto productCreateDto)
+        {
+            var productModel = _mapper.Map<Product>(productCreateDto);
+            _repository.CreateProduct(productModel);
+            return CreatedAtRoute(nameof(GetProductById), new { Id = ProductReadDto.Id }, ProductReadDto);
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public ActionResult PutProduct(int id, ProductUpdateDto productUpdateDto)
+        {
+            var productModelFromRepo = _repository.GetProductById(id);
+            if(productModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(productUpdateDto, productModelFromRepo);
+            _repository.UpdateProduct(productModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public ActionResult DeleteProduct(int id)
+        {
+            var productModelFromRepo = _repository.GetProductById(id);
+            if (productModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repository.DeleteProduct(productModelFromRepo);
+            _repository.SaveChanges();
+            return NoContent();
+        }*/
     }
 }
