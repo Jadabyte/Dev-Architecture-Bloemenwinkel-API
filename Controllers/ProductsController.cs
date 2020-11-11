@@ -25,6 +25,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // GET api/products
+        /// <summary>
+        /// This GET-request gives you a list of all the products
+        /// </summary>
+        /// <returns>List of Products</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,6 +40,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // GET api/products/{id}
+        /// <summary>
+        /// This GET-request gives you the product that corresponds to the requested Id.
+        /// </summary>
+        /// <returns>Requested item by Id</returns>
         [HttpGet("{id}", Name="GetProductById")]
         public async Task<IActionResult> GetProductById(int id)
         {
@@ -44,6 +52,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // POST api/values
+        /// <summary>
+        /// This POST-request allows you to create a product.
+        /// </summary>
+        /// <returns>Created Product</returns>
         [HttpPost]
         public ActionResult<ProductReadDto>CreateProduct(ProductCreateDto productCreateDto)
         {
@@ -58,6 +70,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // PUT api/values/5
+        /// <summary>
+        /// This POST-request allows you to update a product.
+        /// </summary>
+        /// <returns>Update Product</returns>
         [HttpPut("{id}")]
         public ActionResult UpdateProduct(int id, ProductUpdateDto productUpdateDto)
         {
@@ -73,6 +89,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // DELETE api/values/5
+        /// <summary>
+        /// This POST-request allows you to delete a product.
+        /// </summary>
+        /// <returns>Deleted Product</returns>
         [HttpDelete("{id}")]
         public ActionResult DeleteProduct(int id)
         {
@@ -81,7 +101,7 @@ namespace FlowerStoreAPI.Controllers
             {
                 return NotFound();
             }
-            _repository.DeleteProduct(productModelFromRepo);
+            //_repository.DeleteProduct(productModelFromRepo);
             _repository.SaveChanges();
             return NoContent();
         }

@@ -23,4 +23,5 @@ In case of errors, run these commands to install packages, and try again
 
 ## To-do
 - Add POST, PUT, and DELETE endpoints to orders
+- Make endpoints asynchronous
 - Relevant unit tests
