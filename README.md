@@ -22,5 +22,5 @@ In case of errors, run these commands to install packages, and try again
 - dotnet add package Swashbuckle.AspNetCore.SwaggerUI
 
 ## To-do
-- Add POST, PUT, and DELETE endpoints to controllers
+- Add POST, PUT, and DELETE endpoints to orders
 - Relevant unit tests

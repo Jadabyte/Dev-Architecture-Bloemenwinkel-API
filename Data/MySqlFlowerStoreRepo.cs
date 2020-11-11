@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,12 @@ namespace FlowerStoreAPI.Data
             _context = context;
         }
 
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
+        // Logic for GetAll
         public async Task<IEnumerable<Client>> GetAllClients()
         {
             return await _context.Clients.ToListAsync();
@@ -34,6 +41,7 @@ namespace FlowerStoreAPI.Data
             return await _context.Stores.ToListAsync();
         }
 
+        // Logic for GetById
         public async Task<Client> GetClientById(int id)
         {
             return await _context.Clients.FirstOrDefaultAsync(p => p.Id == id);
@@ -53,5 +61,26 @@ namespace FlowerStoreAPI.Data
         {
             return await _context.Stores.FirstOrDefaultAsync(p => p.Id == id);
         }
+
+        // Logic for Create
+        public void CreateProduct(Product prod)
+        {
+            if(prod == null)
+            {
+                throw new ArgumentNullException(nameof(prod));
+            }
+
+            _context.Products.Add(prod);
+        }
+
+        /*public void CreateClient(Client client)
+        {
+            if(client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            _context.Clients.Add(client);
+        }*/
     }
 }

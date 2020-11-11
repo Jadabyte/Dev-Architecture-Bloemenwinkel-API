@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FlowerStoreAPI.Data;
 using FlowerStoreAPI.Models;
+using FlowerStoreAPI.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using FlowerStoreAPI.Profiles;
 
 namespace FlowerStoreAPI.Controllers
 {
@@ -11,13 +14,14 @@ namespace FlowerStoreAPI.Controllers
     [ApiController]
     public class ClientsController : Controller
     {
-
         private readonly IFlowerStoreRepo _repository;
+        private readonly IMapper _mapper;
 
         // Dependency injection of repository
-        public ClientsController(IFlowerStoreRepo repository)
+        public ClientsController(IFlowerStoreRepo repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         // GET api/clients
@@ -42,22 +46,17 @@ namespace FlowerStoreAPI.Controllers
             var clientItem = await _repository.GetClientById(id);
             return Ok(clientItem);
         }
-
+        
         /*
         [HttpPost]
-        public ActionResult<ClientReadDto> CreateClient(ClientCreateDto clientcreatedto)
+        public ActionResult<ClientReadDto> CreateClient(ClientCreateDto clientCreateDto)
         {
-            var ClientModel = _mapper.Map<Client>(clientcreatedto);
-            _repository.CreateClient(ClientModel);
-            return CreatedAtRoute(nameof(GetClientById),
-            new
-            {
-                Id = ClientReadDto.Id
-            },
+            var clientModel = _mapper.Map<Client>(clientCreateDto);
+            _repository.CreateClient(clientModel);
+            _repository.SaveChanges();
 
-                ClientReadDto);
+            return CreatedAtRoute(nameof(GetClientById), new { Id = ClientReadDto.Id }, ClientReadDto);
         }
-
         [HttpPut("{id}")]
         public ActionResult UpdateClient(int id, ClientUpdateDto clientUpdateDto)
         {

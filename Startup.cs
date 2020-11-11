@@ -17,6 +17,8 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using System.Diagnostics;
+using AutoMapper;
+using FlowerStoreAPI.Profiles;
 
 namespace FlowerStoreAPI
 {
@@ -51,6 +53,17 @@ namespace FlowerStoreAPI
 
             // Dependency injection
             services.AddScoped<IFlowerStoreRepo, MySqlFlowerStoreRepo>();
+
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+             {
+                mc.AddProfile(new ProductsProfile());
+             });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

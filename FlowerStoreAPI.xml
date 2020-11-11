@@ -10,5 +10,11 @@
             </summary>
             <returns>A list of clients</returns>
         </member>
+        <member name="M:FlowerStoreAPI.Controllers.OrdersController.GetAllOrders">
+            <summary>
+            This GET-request gives you a list of all the clients of the flower store.
+            </summary>
+            <returns>A list of clients</returns>
+        </member>
     </members>
 </doc>
