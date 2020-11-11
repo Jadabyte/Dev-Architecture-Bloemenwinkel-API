@@ -21,6 +21,10 @@ namespace FlowerStoreAPI.Controllers
         // private readonly MockFlowerStoreRepo _repository = new MockFlowerStoreRepo();
         
         // GET api/stores
+        /// <summary>
+        /// This GET-request gives you a list of all the flower stores.
+        /// </summary>
+        /// <returns>A list of stores</returns>
         [HttpGet]
         public async Task<IActionResult> GetAllStores()
         {
@@ -29,6 +33,10 @@ namespace FlowerStoreAPI.Controllers
         }
 
         // GET api/stores/{id}
+        /// <summary>
+        /// This GET-request gives you the store that corresponds to the requested Id.
+        /// </summary>
+        /// <returns>Requested item by Id</returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStoreById(int id)
         {
