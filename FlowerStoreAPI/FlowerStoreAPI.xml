@@ -10,6 +10,12 @@
             </summary>
             <returns>A list of clients</returns>
         </member>
+        <member name="M:FlowerStoreAPI.Controllers.ClientsController.GetClientById(System.Int32)">
+            <summary>
+            This GET-request gives you the client that corresponds to the requested Id.
+            </summary>
+            <returns>Requested item by Id</returns>
+        </member>
         <member name="M:FlowerStoreAPI.Controllers.OrdersController.GetAllOrders">
             <summary>
             This GET-request gives you a list of all the orders of the flower store.
@@ -42,15 +48,27 @@
         </member>
         <member name="M:FlowerStoreAPI.Controllers.ProductsController.UpdateProduct(System.Int32,FlowerStoreAPI.Dtos.ProductUpdateDto)">
             <summary>
-            This POST-request allows you to update a product.
+            This PUT-request allows you to update a product.
             </summary>
             <returns>Update Product</returns>
         </member>
         <member name="M:FlowerStoreAPI.Controllers.ProductsController.DeleteProduct(System.Int32)">
             <summary>
-            This POST-request allows you to delete a product.
+            This DELETE-request allows you to delete a product.
             </summary>
             <returns>Deleted Product</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoresController.GetAllStores">
+            <summary>
+            This GET-request gives you a list of all the flower stores.
+            </summary>
+            <returns>A list of stores</returns>
+        </member>
+        <member name="M:FlowerStoreAPI.Controllers.StoresController.GetStoreById(System.Int32)">
+            <summary>
+            This GET-request gives you the store that corresponds to the requested Id.
+            </summary>
+            <returns>Requested item by Id</returns>
         </member>
     </members>
 </doc>
