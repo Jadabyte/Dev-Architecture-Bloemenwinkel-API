@@ -17,7 +17,7 @@ namespace FlowerStoreAPI.Controllers
         private readonly IFlowerStoreRepo _repository;
         private readonly IMapper _mapper;
 
-        // Dependency injection of repository
+        // Dependency injection of repository and mapper
         public ProductsController(IFlowerStoreRepo repository, IMapper mapper)
         {
             _repository = repository;
