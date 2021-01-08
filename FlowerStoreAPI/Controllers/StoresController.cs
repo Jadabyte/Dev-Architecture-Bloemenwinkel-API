@@ -43,7 +43,7 @@ namespace FlowerStoreAPI.Controllers
             var storeItem = await _repository.GetStoreById(id);
             return Ok(storeItem);
         }
-        /*
+        
         // POST: api/Store
         [HttpPost]
         [Produces("applications/json")]
@@ -94,6 +94,6 @@ namespace FlowerStoreAPI.Controllers
                 }
 
             };
-        }*/
+        }
     }
 }

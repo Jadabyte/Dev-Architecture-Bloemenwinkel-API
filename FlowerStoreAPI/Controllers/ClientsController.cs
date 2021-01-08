@@ -61,6 +61,7 @@ namespace FlowerStoreAPI.Controllers
 
             return CreatedAtRoute(nameof(GetClientById), new { Id = ClientReadDto.Id }, ClientReadDto);
         }
+
         [HttpPut("{id}")]
         public ActionResult UpdateClient(int id, ClientUpdateDto clientUpdateDto)
         {
@@ -89,6 +90,7 @@ namespace FlowerStoreAPI.Controllers
             _repository.DeleteClient(clientModelFromRepo);
             _repository.SaveChanges();
             return NoContent();
-        }*/
+        }
+        */
     }
 }
