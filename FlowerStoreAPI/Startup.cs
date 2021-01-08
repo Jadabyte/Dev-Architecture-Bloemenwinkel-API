@@ -19,6 +19,7 @@ using System.IO;
 using System.Diagnostics;
 using AutoMapper;
 using FlowerStoreAPI.Profiles;
+using System.Reflection;
 
 namespace FlowerStoreAPI
 {
@@ -43,8 +44,8 @@ namespace FlowerStoreAPI
                     Version = "v1"
                 });
 
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "FlowerStoreAPI.xml");
-                c.IncludeXmlComments(filePath);
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(xmlFile);
             });
 
             services.AddDbContext<FlowerStoreContext>(options => options.UseMySQL(Configuration.GetConnectionString("FlowerStoreconnection")));
@@ -57,7 +58,7 @@ namespace FlowerStoreAPI
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
              {
-                mc.AddProfile(new ProductsProfile());
+                 mc.AddProfile(new ProductsProfile());
              });
 
             IMapper mapper = mapperConfig.CreateMapper();
@@ -79,7 +80,7 @@ namespace FlowerStoreAPI
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c => 
+            app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Flower Store API v1");
             });
